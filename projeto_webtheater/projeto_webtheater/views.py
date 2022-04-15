@@ -28,7 +28,10 @@ def inicial(request):
 
 
 def video(request, id):
-    for v in videos.videos_list:
+    videos_lista = videos.videos_list
+    print(videos_lista)
+    for v in videos_lista:
+        print(v.id)
         if v.id == int(id):
-            return render(request, 'video.html', {})
-    return render(request, '', {'msg': 'NAO ENCONTRADO'}), 404
+            return render(request, 'video.html', {'video': v})
+    return render(request, 'index.html', {'msg': 'NAO ENCONTRADO'})

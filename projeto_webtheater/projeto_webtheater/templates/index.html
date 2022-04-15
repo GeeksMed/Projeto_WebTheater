@@ -10,7 +10,11 @@
 <body>
     <h1>Projeto Web Theater</h1>
     <div id="main_frame">
+        {% if msg %}
+        <p>{{msg}}</p>
+        {% else %}
         <p>Aguardando carregamento...</p>
+        {% endif %}
     </div>
 </body>
 <script>
@@ -21,8 +25,20 @@
             if(xhr.readyState === XMLHttpRequest.DONE) {
                 if(xhr.status === 200) {
                     document.getElementById("main_frame").innerHTML = xhr.response;
-                } else {
-                    alert(`Deu ruim! Status ${xhr.status}`);
+                }
+            }        
+        };
+        xhr.send(); 
+    }
+
+    function video(id){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', `{% url 'video' 'REFERENCE_ID'%}`.replace("REFERENCE_ID", id));
+        xhr.setRequestHeader('X-CSRFToken', "{{csrf_token}}");
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                if(xhr.status === 200) {
+                    document.getElementById("main_frame").innerHTML = xhr.response;
                 }
             }        
         };

@@ -38,7 +38,7 @@ class Video():
         return self.__titulo
     
     @titulo.setter
-    def id(self, titulo):
+    def titulo(self, titulo):
         self.__titulo = titulo
 
     @property

@@ -19,5 +19,5 @@ from projeto_webtheater import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('videos/', views.inicial, name="inicial"),
-    path('videos/<id>/', views.video, name='video'),
+    path('videos/<id>/', views.video, name="video"),
 ]

@@ -19,7 +19,6 @@ class CategoriaDAO():
             for categoria in self.__categoria_list:
                 tres = []
                 videos = lista_videos.videos_list
-                print(videos)
                 for video in videos:
                     if video.categoria_id == categoria.id:
                         if len(tres) <= 3:
