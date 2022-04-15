@@ -1,3 +1,23 @@
 <section>
-    <p>INICIO</p>
+    <h1>Categorias:</h1>
+    {% for categoria in categorias %}
+    <hr>
+    <a style="display:block">
+        <div>
+            {% load static %}
+            <h2>{{ categoria.titulo }}</h2>
+            <p>{{ categoria.descricao }}</p>  
+            <img src="{% static categoria.url_ilustracao %}" width="50" height="50">
+        </div>
+    </a>
+    <h3>Top 3 Vídeos da Categoria</h3>
+    <div>
+        {% for video in categoria.tres_mais %}
+        <a onclick="video('{{video.id}}')" href="#" style="display:block">
+            <h4>{{ video.titulo}}</h4>
+            <img src="{% static video.url_imagem_apresentacao %}" width="40" height="80">
+        </a>
+        {% endfor %}
+    </div>
+    {% endfor %}
 </section>

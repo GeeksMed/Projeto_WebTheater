@@ -6,15 +6,15 @@ from projeto_webtheater.models.videoDAO import VideoDAO
 
 
 categorias = CategoriaDAO([
-    Categoria(0, "Sakura", "Sobre flores de cerejeira.", r'img\sakura.jpg'),
-    Categoria(1, "Nascer do Sol", "Sobre nascer do Sol.", r'img\nascer.jpg'),
-    Categoria(2, "Disco", "Alguns discos.", r'img\disco.jpg'),
+    Categoria(0, "Sakura", "Sobre flores de cerejeira.", r'images\sakura.jpg'),
+    Categoria(1, "Nascer do Sol", "Sobre nascer do Sol.", r'images\nascer.jpg'),
+    Categoria(2, "Disco", "Alguns discos.", r'images\disco.jpg'),
 ])
 
 videos = VideoDAO([
-    Video(0, 'Sakura', 'Flores de Cerejeira', r'img\sakura.jpg', r'videos\sakura.mp4', 0),
-    Video(1, 'Nascer do Sol', 'Nascer do Sol na Floresta', r'img\nascer.jpg', r'videos\sunrise.mp4', 1),
-    Video(2, 'Disco', 'Disco de Vinil', r'img\disco.jpg', r'videos\disco.mp4', 2),
+    Video(0, 'Sakura', 'Flores de Cerejeira', r'images\sakura.jpg', r'videos\sakura.mp4', 0),
+    Video(1, 'Nascer do Sol', 'Nascer do Sol na Floresta', r'images\nascer.jpg', r'videos\sunrise.mp4', 1),
+    Video(2, 'Disco', 'Disco de Vinil', r'images\disco.jpg', r'videos\disco.mp4', 2),
 ])    
 
 
@@ -24,7 +24,7 @@ def home(request):
 
 def inicial(request):
     categorias.verifica_tres_mais_por_categoria(videos)
-    return render(request, 'inicial.html', {'categorias': categorias})
+    return render(request, 'inicial.html', {'categorias': categorias.categoria_list})
 
 
 def video(request, id):
