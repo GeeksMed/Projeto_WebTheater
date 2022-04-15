@@ -13,7 +13,7 @@
     <h3>Top 3 Vídeos da Categoria</h3>
     <div>
         {% for video in categoria.tres_mais %}
-        <a onclick="video('{{video.id}}')" href="#" style="display:block">
+        <a onclick="video('{{video.id}}')" href="#" style="text-decoration: none; color: black; display:block;">
             <h4>{{ video.titulo}}</h4>
             <img src="{% static video.url_imagem_apresentacao %}" width="40" height="80">
         </a>

@@ -8,8 +8,9 @@
     {% load static %}
 </head>
 <body onload="inicio();">
-    <h1>Projeto Web Theater</h1>
-    <button onclick="inicio();">Inicio</button>
+    <a onclick="inicio();" href="#" style="text-decoration: none; color: black;">
+        <h1>Projeto Web Theater</h1>
+    </a>
     <div id="main_frame">
         {% if msg %}
         <p>{{msg}}</p>

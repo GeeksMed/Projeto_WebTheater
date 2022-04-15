@@ -1,3 +1,27 @@
 <section>
-    <p>VIDEO</p>
+    <h1>Video:</h1>
+    <hr>
+    {% load static %}
+    <h2>{{ video.titulo }}</h2>
+    <p>{{ video.breve_descricao }}</p>
+    <p>{{ video.data_publicacao }}</p>
+    <hr>
+    <video width='320' height= '240' controls>
+        <source src="{% static video.url_video type='video/mp4' %}">
+        Your browser does not support the video tag.
+    </video>
+    <form id="compartilhar">
+        <label for="link">Link para compartilhar: </label>
+        <input id="link" name="link" type="text" value="{{ request.build_absolute_uri }}" readonly style="width: 250px;">
+    </form>
+    <hr>
+    <p>Visualizacoes: {{ video.qt_visualizacao }}</p>
+    <p>Curtidas: {{ video.qt_curtidas }}</p>
+    <hr>
+    <h5>Comentarios:</h5>
+    <div>
+        {% for coment in video.comentarios %}
+            <p>{{coment}}</p>
+        {% endfor %}
+    </div>
 </section>
