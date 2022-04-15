@@ -4,9 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Web Theater</title>
+    {% load static %}
 </head>
 <body>
-    
+    <h1>Projeto Web Theater</h1>
+    <div id="main_frame">
+        <p>Aguardando carregamento...</p>
+    </div>
 </body>
+<script>
+    function inicio(){
+        let xhr = new XMLHttpRequest();
+        xhr.open('GET', "{% url 'inicial' %}");
+        xhr.onreadystatechange = function() {
+            if(xhr.readyState === XMLHttpRequest.DONE) {
+                if(xhr.status === 200) {
+                    document.getElementById("main_frame").innerHTML = xhr.response;
+                } else {
+                    alert(`Deu ruim! Status ${xhr.status}`);
+                }
+            }        
+        };
+        xhr.send(); 
+    }
+</script>
 </html>
